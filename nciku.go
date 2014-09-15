@@ -38,7 +38,12 @@ func SearchForID(c string) string {
 	return string(match)
 }
 
+func StrokeURL(c string) string {
+	URL := fmt.Sprintf("http://images.nciku.com/stroke_order/%v.swf", SearchForID(c))
+	return URL
+}
+
 func main() {
 	// GetPage("好")
-	fmt.Println(SearchForID("好"))
+	fmt.Println(StrokeURL("好"))
 }
