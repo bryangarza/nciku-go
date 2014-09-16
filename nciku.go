@@ -34,6 +34,7 @@ func SearchForID(c string) string {
 	page := GetPage(c)
 	match := r.Find(page)
 	// taking off the last 5 chars, ie ">好 is 5 chars long
+	// Chinese characters take up 3 bytes
 	match = match[:(len(match) - 5)]
 	return string(match)
 }
