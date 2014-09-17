@@ -8,8 +8,11 @@ import (
 	"regexp"
 )
 
+const searchurl string = "http://www.nciku.com/search/all/%v"
+const swfurl string = "http://images.nciku.com/stroke_order/%v.swf"
+
 func GetPage(c string) []byte {
-	url := fmt.Sprintf("http://www.nciku.com/search/all/%v", c)
+	url := fmt.Sprintf(searchurl, c)
 	client := &http.Client{}
 	req, err := http.NewRequest("GET", url, nil)
 	req.Header.Add("User-agent", "Mozilla/5.0")
@@ -40,7 +43,7 @@ func SearchForID(c string) string {
 }
 
 func StrokeURL(c string) string {
-	URL := fmt.Sprintf("http://images.nciku.com/stroke_order/%v.swf", SearchForID(c))
+	URL := fmt.Sprintf(swfurl, SearchForID(c))
 	return URL
 }
 
